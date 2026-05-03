@@ -233,11 +233,17 @@ int main(int argc, char** argv) {
     dino::runtime::register_mods();
 
     if (cli_args.skip_launcher) {
-        // HACK: This relies on unsupported behavior in the runtime and requires using a fork
-        //       of the runtime with a hack to avoid an uninitialized VI origin when doing this
-        recomp::start_game(supported_games[0].game_id);
-        recompui::hide_all_contexts();
+    std::u8string game_id = supported_games[0].game_id;
+
+    auto rom_result = recomp::select_rom("baserom.z64", game_id);
+    if (rom_result != recomp::RomValidationError::Good) {
+        ultramodern::error_handling::message_box("Failed to select baserom.z64. Use the unmodified December 2000 Dinosaur Planet prototype ROM.");
+        return 1;
     }
+
+    recomp::start_game(game_id);
+    recompui::hide_all_contexts();
+}
 
     recomp::Configuration config = {
         .project_version = project_version,

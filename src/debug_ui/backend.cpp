@@ -3,7 +3,7 @@
 #ifdef _WIN32
 #include <SDL_video.h>
 #else
-#include <SDL2/SDL_video.h>
+#include <SDL_video.h>
 #endif
 #include <SDL_events.h>
 
@@ -61,29 +61,13 @@ static moodycamel::ConcurrentQueue<SDL_Event> event_queue{};
 static std::unique_ptr<VulkanContext> vulkanContext;
 
 static RT64::UserConfiguration::GraphicsAPI get_graphics_api() {
-    const ultramodern::renderer::GraphicsConfig &config = ultramodern::renderer::get_graphics_config();
-
-    switch (config.api_option) {
-        case ultramodern::renderer::GraphicsApi::D3D12:
-            return RT64::UserConfiguration::GraphicsAPI::D3D12;
-        case ultramodern::renderer::GraphicsApi::Vulkan:
-            return RT64::UserConfiguration::GraphicsAPI::Vulkan;
-        case ultramodern::renderer::GraphicsApi::Auto: {
 #if defined(_WIN32)
-            return RT64::UserConfiguration::GraphicsAPI::D3D12;
-#elif defined(__gnu_linux__)
-            return RT64::UserConfiguration::GraphicsAPI::Vulkan;
+    return RT64::UserConfiguration::GraphicsAPI::D3D12;
 #elif defined(__APPLE__)
-            // TODO: Add MoltenVK option for Mac?
-            return RT64::UserConfiguration::GraphicsAPI::Vulkan;
+    return RT64::UserConfiguration::GraphicsAPI::Metal;
 #else
-            static_assert(false && "Unimplemented")
+    return RT64::UserConfiguration::GraphicsAPI::Vulkan;
 #endif
-        }
-        default:
-            assert(false && "Unknown Graphics API.");
-            return RT64::UserConfiguration::GraphicsAPI::OptionCount;
-    }
 }
 
 bool is_open() { return b_is_open; }
@@ -233,6 +217,7 @@ static void rt64_init_hook(plume::RenderInterface* _interface, plume::RenderDevi
 #endif
             break;
         }
+#if !defined(__APPLE__)
         case RT64::UserConfiguration::GraphicsAPI::Vulkan: {
             plume::VulkanDevice *interfaceDevice = static_cast<plume::VulkanDevice *>(device);
             ImGui_ImplVulkan_LoadFunctions([](const char *functionName, void *vulkanInstance) {
@@ -272,6 +257,7 @@ static void rt64_init_hook(plume::RenderInterface* _interface, plume::RenderDevi
             ImGui_ImplVulkan_Init(&initInfo);
             break;
         }
+#endif
         default:
             assert(false && "Unknown Graphics API.");
             break;
@@ -283,6 +269,9 @@ static void rt64_init_hook(plume::RenderInterface* _interface, plume::RenderDevi
 }
 
 static void rt64_draw_hook(plume::RenderCommandList* command_list, plume::RenderFramebuffer* swap_chain_framebuffer) {
+#if defined(__APPLE__)
+    return;
+#endif
     if (!b_is_open) return;
     
     const std::lock_guard<std::mutex> frame_lock(frame_mutex);

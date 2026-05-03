@@ -1,5 +1,11 @@
+
+if(APPLE)
+    add_link_options("-Wl,-segprot,__TEXT,rwx,rx")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-segprot,__TEXT,rwx,rx")
+endif()
+
 cmake_minimum_required(VERSION 3.20)
-project(DinoRecomp LANGUAGES C CXX)
+project(DinoRecomp LANGUAGES C CXX OBJCXX)
 set(CMAKE_C_STANDARD 17)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -145,7 +151,8 @@ function(make_recomp_controller_db)
     file(READ ${CMAKE_SOURCE_DIR}/lib/SDL_GameControllerDB/gamecontrollerdb.txt SDL_DB_CONTENTS)
     file(READ ${CMAKE_SOURCE_DIR}/gamecontrollerdb-extra.txt CUSTOM_DB_CONTENTS)
 
-    file(WRITE ${RECOMP_CONTROLLER_DB_TXT} ${SDL_DB_CONTENTS} "\n" ${CUSTOM_DB_CONTENTS})
+    file(WRITE ${RECOMP_CONTROLLER_DB_TXT} ${SDL_DB_CONTENTS} "
+" ${CUSTOM_DB_CONTENTS})
 endfunction()
 
 make_recomp_controller_db()
@@ -352,3 +359,21 @@ build_pixel_shader(DinosaurPlanetRecompiled "shaders/InterfacePS.hlsl" "shaders/
 target_sources(DinosaurPlanetRecompiled PRIVATE ${SOURCES} ${SOURCES_RECURSIVE} ${SOURCES_EXTRA})
 
 set_property(TARGET DinosaurPlanetRecompiled PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
+
+if(APPLE)
+    target_sources(DinosaurPlanetRecompiled PRIVATE
+        src/runtime/macos_metal_layer.mm
+    )
+endif()
+
+if(APPLE)
+    set_source_files_properties(src/runtime/platform_macos.cpp PROPERTIES LANGUAGE OBJCXX)
+endif()
+
+
+if(APPLE)
+    target_link_options(DinosaurPlanetRecompiled PRIVATE
+        "-Wl,-segprot,__TEXT,rwx,rx"
+    )
+endif()
+

@@ -1,0 +1,20 @@
+{
+    "analog_cam_mode": "Off",
+    "analog_camera_invert_mode": "InvertNone",
+    "autosave_mode": "On",
+    "background_input_mode": "On",
+    "camera_invert_mode": "InvertY",
+    "debug_diprintf": false,
+    "debug_dll_logging": false,
+    "debug_reasset_loglevel": 0,
+    "dinomod_check": true,
+    "gyro_sensitivity": 50,
+    "hud_mode": "Default",
+    "joystick_deadzone": 5,
+    "joystick_range": 66,
+    "minimap_mode": "Default",
+    "mouse_sensitivity": 0,
+    "rumble_strength": 25,
+    "sixty_fps": false,
+    "targeting_mode": "Switch"
+}

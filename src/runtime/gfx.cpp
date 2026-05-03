@@ -1,5 +1,9 @@
 #include "gfx.hpp"
 
+#if defined(__APPLE__)
+extern "C" void* dino_create_metal_layer(void* nsWindowPtr);
+#endif
+
 #include "nfd.h"
 #include "ultramodern/ultramodern.hpp"
 
@@ -106,14 +110,19 @@ ultramodern::renderer::WindowHandle create_window(ultramodern::gfx_callbacks_t::
 
     SDL_SysWMinfo wmInfo;
     SDL_VERSION(&wmInfo.version);
-    SDL_GetWindowWMInfo(window, &wmInfo);
+    if (SDL_GetWindowWMInfo(window, &wmInfo) == SDL_FALSE) {
+        return ultramodern::renderer::WindowHandle{};
+    }
 
 #if defined(_WIN32)
     return ultramodern::renderer::WindowHandle{ wmInfo.info.win.window, GetCurrentThreadId() };
+#elif defined(__APPLE__)
+    void* metalLayer = dino_create_metal_layer((void*)wmInfo.info.cocoa.window);
+    return ultramodern::renderer::WindowHandle{ wmInfo.info.cocoa.window, metalLayer };
 #elif defined(__linux__) || defined(__ANDROID__)
     return ultramodern::renderer::WindowHandle{ window };
 #else
-    static_assert(false && "Unimplemented");
+    return ultramodern::renderer::WindowHandle{};
 #endif
 }
 

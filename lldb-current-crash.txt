@@ -1,0 +1,54 @@
+(lldb) target create "./build/DinosaurPlanetRecompiled"
+Current executable set to '/Users/mattybussell/dino-recomp/build/DinosaurPlanetRecompiled' (arm64).
+(lldb) run
+2026-05-02 21:07:50.275604-0400 DinosaurPlanetRecompiled[76172:13677665] [plugin] AddInstanceForFactory: No factory registered for id <CFUUID 0x10210a2c0> F8BB1C28-BAE8-11D6-9C31-00039315CD46
+2026-05-02 21:07:50.604942-0400 DinosaurPlanetRecompiled[76172:13677734] [carc] Reporter disconnected. { function=sendMessage, reporterID=327156248870913 }
+2026-05-02 21:07:50.747354-0400 DinosaurPlanetRecompiled[76172:13677699] [AMCP]          HALC_ProxyIOContext.cpp:1623  HALC_ProxyIOContext::IOWorkLoop: skipping cycle due to overload
+2026-05-02 21:07:51.834532-0400 DinosaurPlanetRecompiled[76172:13677699] [AMCP]          HALC_ProxyIOContext.cpp:1623  HALC_ProxyIOContext::IOWorkLoop: skipping cycle due to overload
+2026-05-02 21:07:51.868186-0400 DinosaurPlanetRecompiled[76172:13677665] [plugin] AddInstanceForFactory: No factory registered for id <CFUUID 0xc34cd4f40> 13AA9C44-6F1B-11D4-907C-0005028F18D5
+2026-05-02 21:07:51.868224-0400 DinosaurPlanetRecompiled[76172:13677665] [default] probe failed for plugin for <CFUUID 0xc34cd4e60> 7DDEECA8-A7B4-11DA-8A0E-0014519758EF
+2026-05-02 21:07:51.868231-0400 DinosaurPlanetRecompiled[76172:13677665] [plugin] RemoveInstanceForFactory: No factory registered for id <CFUUID 0xc34cd4f40> 13AA9C44-6F1B-11D4-907C-0005028F18D5
+2026-05-02 21:07:51.868244-0400 DinosaurPlanetRecompiled[76172:13677665] [plugin] AddInstanceForFactory: No factory registered for id <CFUUID 0xc34cd4f40> 13AA9C44-6F1B-11D4-907C-0005028F18D5
+2026-05-02 21:07:51.868552-0400 DinosaurPlanetRecompiled[76172:13677665] [default] probe failed for plugin for <CFUUID 0xc34cd4e60> 7DDEECA8-A7B4-11DA-8A0E-0014519758EF
+2026-05-02 21:07:51.868558-0400 DinosaurPlanetRecompiled[76172:13677665] [plugin] RemoveInstanceForFactory: No factory registered for id <CFUUID 0xc34cd4f40> 13AA9C44-6F1B-11D4-907C-0005028F18D5
+2026-05-02 21:07:51.868563-0400 DinosaurPlanetRecompiled[76172:13677665] [default] IOCreatePlugInInterfaceForService:0xe00002be for serviceID:0x1000877ba
+2026-05-02 21:07:52.441472-0400 DinosaurPlanetRecompiled[76172:13677665] [default] probe failed for plugin for <CFUUID 0xc34cd4e60> 7DDEECA8-A7B4-11DA-8A0E-0014519758EF
+2026-05-02 21:07:52.443225-0400 DinosaurPlanetRecompiled[76172:13677665] [default] probe failed for plugin for <CFUUID 0xc34cd4e60> 7DDEECA8-A7B4-11DA-8A0E-0014519758EF
+2026-05-02 21:07:52.443310-0400 DinosaurPlanetRecompiled[76172:13677665] [default] IOCreatePlugInInterfaceForService:0xe00002be for serviceID:0x1000877ba
+2026-05-02 21:07:52.474628-0400 DinosaurPlanetRecompiled[76172:13677699] [AMCP]          HALC_ProxyIOContext.cpp:1623  HALC_ProxyIOContext::IOWorkLoop: skipping cycle due to overload
+SDL Video Driver: cocoa
+2026-05-02 21:07:52.732258-0400 DinosaurPlanetRecompiled[76172:13677699] [AMCP]          HALC_ProxyIOContext.cpp:1623  HALC_ProxyIOContext::IOWorkLoop: skipping cycle due to overload
+2026-05-02 21:07:52.737527-0400 DinosaurPlanetRecompiled[76172:13677665] [WindowTab] Cannot index window tabs due to missing main bundle identifier
+Skipping non-mod .DS_Store
+Opening mod dinomod_enhanced
+Controller added: 0
+  Instance ID: 0
+2026-05-02 21:07:52.954766-0400 DinosaurPlanetRecompiled[76172:13677741] [Common] Unable to obtain a task name port right for pid 6648: (os/kern) failure (0x5)
+Device Name: Apple M3
+Device Vendor: 0x106B
+Driver Version: 0x1
+SVG plugin initialised.
+Controller added: 1
+  Instance ID: 1
+Loaded font face 'rmlui-debugger-font' [regular] from 'memory'.
+Loaded font face 'rmlui-debugger-font' [italic] from 'memory'.
+Loaded font face 'PriskaSerif-NotThatFat' [weight=500] from '/Users/mattybussell/dino-recomp/assets/DinoFont.otf'.
+Loaded font face 'LatoLatin' [regular] from '/Users/mattybussell/dino-recomp/assets/LatoLatin-Regular.ttf'.
+Loaded font face 'LatoLatin' [italic] from '/Users/mattybussell/dino-recomp/assets/LatoLatin-Italic.ttf'.
+Loaded font face 'LatoLatin' [bold] from '/Users/mattybussell/dino-recomp/assets/LatoLatin-Bold.ttf'.
+Loaded font face 'LatoLatin' [italic, bold] from '/Users/mattybussell/dino-recomp/assets/LatoLatin-BoldItalic.ttf'.
+Loaded font face 'Noto Emoji' [regular] from '/Users/mattybussell/dino-recomp/assets/NotoEmoji-Regular.ttf'.
+Loaded font face 'PromptFont' [regular] from '/Users/mattybussell/dino-recomp/assets/promptfont/promptfont.ttf'.
+RenderPool in Metal is not implemented currently. Resources are created directly on device.
+2026-05-02 21:07:53.145389-0400 DinosaurPlanetRecompiled[76172:13677699] [AMCP]          HALC_ProxyIOContext.cpp:1623  HALC_ProxyIOContext::IOWorkLoop: skipping cycle due to overload
+Loading mod dinomod_enhanced
+Process 76172 launched: '/Users/mattybussell/dino-recomp/build/DinosaurPlanetRecompiled' (arm64)
+Process 76172 stopped
+* thread #16, name = 'Game Start Thread', stop reason = EXC_BAD_ACCESS (code=2, address=0x100850018)
+    frame #0: 0x0000000100b0a3cc DinosaurPlanetRecompiled`recomp::mods::ModContext::resolve_code_dependencies(recomp::mods::ModHandle&, unsigned long, std::__1::unordered_map<void (*)(unsigned char*, recomp_context*), recomp::overlays::BasePatchedFunction, std::__1::hash<void (*)(unsigned char*, recomp_context*)>, std::__1::equal_to<void (*)(unsigned char*, recomp_context*)>, std::__1::allocator<std::__1::pair<void (* const)(unsigned char*, recomp_context*), recomp::overlays::BasePatchedFunction>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&) + 1456
+DinosaurPlanetRecompiled`recomp::mods::ModContext::resolve_code_dependencies:
+->  0x100b0a3cc <+1456>: stp    x8, x20, [x23]
+    0x100b0a3d0 <+1460>: add    x1, x25, x24
+    0x100b0a3d4 <+1464>: mov    x0, x25
+    0x100b0a3d8 <+1468>: bl     0x1010aa8a4               ; symbol stub for: __clear_cache
+Target 0: (DinosaurPlanetRecompiled) stopped.

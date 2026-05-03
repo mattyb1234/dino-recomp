@@ -182,7 +182,6 @@ ultramodern::renderer::SetupResult map_setup_result(RT64::Application::SetupResu
             return ultramodern::renderer::SetupResult::GraphicsDeviceNotFound;
     }
 
-    fprintf(stderr, "Unhandled `RT64::Application::SetupResult` ?\n");
     assert(false);
     std::exit(EXIT_FAILURE);
 }
@@ -199,7 +198,6 @@ ultramodern::renderer::GraphicsApi map_graphics_api(RT64::UserConfiguration::Gra
             return ultramodern::renderer::GraphicsApi::Auto;
     }
 
-    fprintf(stderr, "Unhandled `RT64::UserConfiguration::GraphicsAPI` ?\n");
     assert(false);
     std::exit(EXIT_FAILURE);
 }
@@ -325,6 +323,9 @@ RT64Context::RT64Context(uint8_t* rdram, ultramodern::renderer::WindowHandle win
 RT64Context::~RT64Context() = default;
 
 void RT64Context::send_dl(const OSTask* task) {
+    static int dl_count = 0;
+    if ((dl_count++ % 60) == 0) {
+    }
     check_texture_pack_actions();
     app->state->rsp->reset();
     app->interpreter->loadUCodeGBI(task->t.ucode & 0x3FFFFFF, task->t.ucode_data & 0x3FFFFFF, true);
@@ -332,6 +333,9 @@ void RT64Context::send_dl(const OSTask* task) {
 }
 
 void RT64Context::update_screen() {
+    static int screen_count = 0;
+    if ((screen_count++ % 60) == 0) {
+    }
     app->updateScreen();
 }
 

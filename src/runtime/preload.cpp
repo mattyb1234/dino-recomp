@@ -97,12 +97,13 @@ void release_preload(PreloadContext& context) {
 
 #else
 
-// TODO implement on other platforms
 bool preload_executable(PreloadContext& context) {
-    return false;
+    context = {};
+    return true;
 }
 
 void release_preload(PreloadContext& context) {
+    context = {};
 }
 
 #endif

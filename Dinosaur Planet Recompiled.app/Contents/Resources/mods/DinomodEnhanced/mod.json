@@ -1,0 +1,25 @@
+
+{
+
+  "game_id": "dino-planet",
+
+  "id": "dinomod_enhanced",
+
+  "display_name": "Dinomod Enhanced",
+
+  "description": "A work-in-progress mod porting over Dinomod Enhanced's ROM fixes to recomp.",
+
+  "short_description": "ROM fixes ported to recomp.",
+
+  "version": "0.8.0",
+
+  "minimum_recomp_version": "0.0.0",
+
+  "authors": ["EoinODoodles"],
+
+  "enabled_by_default": true,
+
+  "dependencies": []
+
+}
+
